@@ -32,7 +32,12 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   iv <- InputValidator$new()
   iv$add_rule("beta", sv_required())
+  iv$add_rule("beta", sv_gte(0))
   iv$add_rule("timestep", sv_required())
+  iv$add_rule("timestep", sv_integer())
+  iv$add_rule("timestep", sv_gt(0))
+  
+
   iv$enable()
 }
 
